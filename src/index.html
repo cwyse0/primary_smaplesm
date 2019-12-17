@@ -9,6 +9,7 @@
 
     <link type="image/ico" rel="shortcut icon" href="resources/tpl/viewer/icons/favicon.ico">
     <link type="image/ico" rel="icon"  href="resources/tpl/viewer/icons/favicon.ico">
+    <link rel="stylesheet" href="https://northbrooklynneighbors.org/wp-content/themes/north-brooklyn-neighbors/fonts/stylesheet.css">
 
     <!--
         To optimize how your story looks in search engine and social network
@@ -44,11 +45,11 @@
       //---------------------------------
       var configOptions = {
         // Enter an application ID created through the Cascade builder
-        appid: "",
+        appid: "9275d7e7a1fa45d8aa9d3c099d45880b",
         // Optionally, to secure Cascade's access, if the story item is private or to use the builder
         //    configure an ArcGIS OAuth application ID (example: 6gyOg377fLUhUk6f)
         // When specified, sign-in is mandatory even if your story is public
-        oAuthAppId: "",
+        oAuthAppId: "9275d7e7a1fa45d8aa9d3c099d45880b",
         // Optionally, to use the appid URL parameter, configure authorizedOwners to reference
         //    members whose stories can be viewed by this storytelling app.
         // To authorize stories owned by...
@@ -74,6 +75,7 @@
         pathJSAPI4: 'https://js.arcgis.com/4.10/'
       };
     </script>
+    
     <noscript>
       <div style="position: fixed; top: 0px; left: 0px; z-index: 3000;
                 height: 100%; width: 100%; background-color: #FFFFFF">
@@ -84,6 +86,251 @@
   <body>
     <style>
       /* CUSTOM CSS RULES */
+      /* notes: 
+    cover green = #c5d88cad
+	  cover blue  = #14c8ff91 
+	  story map with working bookmarks: http://redlands.pop.psu.edu/storymap/index.html?&bookmark=%E2%97%8B%20Cancer
+	  <a href="#" target="_blank" rel="noopener noreferrer">cancer problem</a>
+	  Tutorial: https://community.esri.com/external-link.jspa?url=https%3A%2F%2Fdeveloperscorner.storymaps.arcgis.com%2Fadding-links-to-sections-in-cascade-930a091365c0
+      */
+
+      <link rel="stylesheet" href="https://northbrooklynneighbors.org/wp-content/themes/north-brooklyn-neighbors/fonts/stylesheet.css"><p style = "font-family:Futura Heavy, sans-serif;font-size:24px">
+
+
+					/* Font Edits */
+
+					    h1, h2, h3, h4, h5, h6 {
+					      font-family: Futura Heavy, sans-serif !important;
+					      font-weight: 600 !important;
+					      font-style: normal !important;
+					      /*color: #56524A !important;  */
+					      }
+
+
+					    p, li, body  {
+					      font-family: Futura Medium, sans-serif !important;
+					      font-weight: 200 !important;
+					      font-style: normal !important;
+					      color: #56524A !important;
+					      }
+
+					/* SPECIFIC EDITS */
+
+            .progressjs-theme-blue .progressjs-inner {
+                height: 2px;
+                -webkit-transition: all .3s ease-out;
+                -moz-transition: all .3s ease-out;
+                -o-transition: all .3s ease-out;
+                transition: all .3s ease-out;
+                background-color: #53A7DD;
+            }
+
+          /* working section */ 
+            
+              .section-layout-cover .cover-title {
+                display: flex;
+                font-size: 4.5rem;
+                line-height: 1.2;
+                border: 2px solid transparent;
+                justify-content: left !important;
+                font-family: Futura Heavy;
+                font-weight: 100px;
+                text-align: left;
+                max-width: 75%;
+                }
+              .section-layout-cover .cover-subtitle {
+                display: flex;
+                font-size: 2.25rem;
+                line-height: 1.2;
+                border: 2px solid transparent;
+                justify-content: left !important;
+                font-family: Futura Medium;
+                text-align: left;
+                max-width: 50%;
+              }
+
+
+              .section-layout-title.size-medium .foreground {
+                height: 100px;
+                line-height: 100px;
+              }
+              .section-layout-title .foreground .text-background {
+                display: flex;
+                max-width: 90%;
+                line-height: normal;
+                padding: 0px 0px;
+              }
+              .section-layout-title .foreground .fg-title {
+                display: inline-block !important;
+                font-size: 32px;
+                line-height: 3;
+                word-break: break-word;
+                pointer-events: all;
+                font-family: Futura Medium;
+              }
+              div.text-background {
+              width: 100%;
+              margin-left: 25%;
+              }
+              p.block{
+                width: 60%;
+                font-size: 18px;
+              }
+              p.section-layout-sequence {
+                line-height: 150%;
+                text-align: left;
+              }
+
+              h2.block{
+                font-family: Futura Medium;
+                font-weight: 200 !important;
+                font-style: normal !important;
+                color: #56524A !important;
+              }
+
+					      /* Header styling for pre scrolled splash page */
+					      .story-header.compact{
+					      background-color: white !important;
+					      height: 10%;
+					      position: fixed; 
+					      display: flex;
+					      box-shadow: 0 3px 5px 0 rgba(169,169,169,.5);
+					      /*visibility: hidden; */
+					      }
+
+					            /* Header styling for navigation bar after scrolling past splash page */
+					      .story-header{
+					      background-color: #ffffff !important;
+					      height: 10%;
+					      position: fixed; 
+					      display: flex;
+					      box-shadow: 0 3px 5px 0 rgba(169,169,169,.5);
+					      }
+
+					            /* icon logo in top bar - sizing and shadow decorations removal */
+					      .logoImg {
+					      text-shadow: none;
+					      text-decoration: none;
+					      filter: none !important;
+					      border: none !important; 
+					      outline: none !important; 
+					      box-shadow: none !important;
+					      max-height: 40px !important;
+					      max-width: 182px !important;
+					      margin-left: 25px;
+					      }
+
+					    .logo-title-container {
+					     	width: 20%;
+					      }
+					    .story-header .title {
+					      	visibility: hidden;
+					      }
+
+                .story-header .linkContainer {
+                font-family: Futura Medium;
+                margin-right: 8px;
+                vertical-align: 1px;
+                text-shadow: none;
+                text-decoration: none;
+                filter: none !important;
+                border: none !important; 
+                outline: none !important; 
+                box-shadow: none !important;
+              }
+              .story-header .linkContainer .link {
+               background-color: #53A7DD;
+               border-radius: 20px;
+               margin-right:10px;
+               padding: 10px;
+               color: #FFF;
+               font-family: Futura Heavy;
+               text-transform: uppercase;
+              }
+              .story-header .link:hover{
+                text-decoration: none !important;
+                background-color:#98caeb !important;
+              }
+
+
+
+              .bookmarks .bookmark {
+                font-weight: 600;
+                font-family: Futura Heavy !important;
+                letter-spacing: 1px !important;
+                visibility: visible !important;
+               }
+
+					    li.bookmark.visible{
+					        padding: 10px;
+                  color: #00000080 !important; /* A6C440 */
+					    }
+
+              li.bookmark:hover {
+                  color: #000 !important;
+                  border-bottom-color: #FFF !important;
+                }
+
+              li.bookmark.active{
+                  color: #000 !important; /*c5d88cad*/
+                  border-bottom-color: #FFF !important;
+                }
+
+
+/*
+					     ul.bookmarks.bookmarks-hidden{
+					     	width: 100%;
+					     	height: 100%;
+					     	visibility: visible;
+					     }
+					     li.bookmark.visible{
+					     	width: 33%;
+  							float: left;
+  							font-color: #c5d88cad !important;
+  							height:20%;
+  							background-color: grey;				
+					     }
+*/
+
+
+
+
+					     ul.dropdown-menu {
+					        background: #FFF !important;
+					      }
+
+
+
+
+
+
+
+
+
+
+					      /* scroll button info text  */
+					      
+					      .section-layout-cover .scroll-invite-btn:after
+					      {
+					        content: "Scroll down to read more";
+					        display: block;
+                  font-size: 20px;
+					        text-transform: uppercase;
+					        border-radius: 14px;
+					        color: #ffffff;
+					        text-align: center;
+					        position: absolute;
+					        left: 0;
+					        right: 0;
+					        bottom: 75px;
+					        font-family: Futura Medium !important;
+					        font-weight: 200;
+					        font-style: normal;
+					      }
+
+
+
+
     </style>
 
     <div class="embed-wrapper">
